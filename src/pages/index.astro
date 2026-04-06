@@ -1,8 +1,45 @@
 ---
 import Hero from '../components/Hero.astro';
+import Testimonial from '../components/Testimonial.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Home - Moonriver Instruments">
-	<Hero />
+	<main>
+		<Hero />
+		<section id="about-us">
+			<h1>We work to inspire your creativity</h1>
+			<p><strong>History of our company:</strong></p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, repellat qui, ad architecto, harum ut quo molestias earum ratione veniam neque nobis odio nam consequatur itaque! Dicta dolor consequuntur id est, iure ullam nam quas amet maiores saepe itaque illum.</p>
+		</section>
+		<section id="testimonials">
+			<Testimonial
+				name="Justin"
+				quote="Ex adipisicing excepteur duis id officia eiusmod deserunt."
+			/>
+			<Testimonial
+				name="Natasha"
+				quote="Consequat ex do mollit sint magna fugiat aliquip exercitation dolor ea."
+			/>
+			<Testimonial
+				name="Gunter"
+				quote="Enim ipsum voluptate dolore voluptate officia sunt cupidatat consequat in fugiat laborum ex proident."
+			/>
+		</section>
+	</main>
 </Layout>
+
+<style>
+section {
+	display: grid;
+	place-items: center;
+	max-width: 100ch;
+	margin: 0 auto;
+	padding: 2rem;
+}
+section#testimonials {
+	grid-template-columns: repeat(3, minmax(120px, 1fr));
+	place-items: start;
+	gap: 1rem;
+}
+</style>

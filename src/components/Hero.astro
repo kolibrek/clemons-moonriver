@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/guitar-play-hero.jpg';
+---
+
+<section id="hero">
+  <div>
+    <h1>Discover Your New Sound</h1>
+    <h2>Moonriver Instruments</h2>
+    <a href="/shop/">Find Your Dream Instrument</a>
+  </div>
+  <Image src={heroImage} height="600" alt="man playing a guitar" />
+</section>
+
+<style>
+  section {
+    background-color: #171717;
+    color: #faebd7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 4rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  section div {
+    display: flex;
+    flex-direction: column;
+  }
+  h1 {
+    font-size: 1.75em;
+  }
+  h2 {
+    font-weight: 200;
+  }
+  a {
+    color: hsl(153, 100%, 75%);
+    margin-top: 2rem;
+    text-decoration: none;
+    &:hover {
+      color: hsl(153, 100%, 85%);
+    }
+  }
+</style>

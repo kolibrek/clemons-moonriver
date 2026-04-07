@@ -5,7 +5,7 @@ const { name, image, quote } = Astro.props;
 <article>
   <div class="icon"></div>
   <h1>{name}</h1>
-  <p>&quot;{quote}&quot;</p>
+  <p>"{quote}"</p>
 </article>
 
 <style>
@@ -15,7 +15,7 @@ const { name, image, quote } = Astro.props;
     row-gap: 1rem;
     border: 1px solid #ccc;
     border-radius: 0.5rem;
-    padding: 1rem 0.5rem;
+    padding: 1rem;
     box-shadow: 0px 0px 20px #0006;
     grid-template-areas:
       "a b"

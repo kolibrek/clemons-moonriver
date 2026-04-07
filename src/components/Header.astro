@@ -1,0 +1,109 @@
+---
+
+---
+<script>
+  // Header Background on scroll
+  window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar')!;
+    let y = (window.scrollY || window.pageYOffset);
+    if (y > 100)
+      navbar.classList.add('scrolled');
+    else
+      navbar.classList.remove('scrolled');
+  });
+
+  // Menu Dialog
+  const menuButton: HTMLButtonElement = document.querySelector('#menu-button')!;
+  const menuDialog: HTMLDialogElement = document.querySelector('#menu-dialog')!;
+  menuButton.addEventListener('click', () => menuDialog.showModal());
+  menuDialog.addEventListener('mousedown', event => (
+    event.target == event.currentTarget && (event.currentTarget as HTMLDialogElement).close())
+  );
+</script>
+<header class="navbar">
+  <div class="left">
+    <h1>Moonriver</h1>
+  </div>
+  <div class="right">
+    <button id="menu-button" class="icon">⁝</button>
+  </div>
+  <dialog id="menu-dialog">
+    <div class="modal">
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/store">Store</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+      <form method="dialog" class="close">
+        <button class="icon">✕</button>
+      </form>
+    </div>
+  </dialog>
+</header>
+
+<style>
+  header {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem 2rem;
+    color: white;
+    background-color: #0000;
+    box-shadow: 0 4px 16px #0000;
+    backdrop-filter: blur(0px);
+    transition: all 0.6s ease;
+  }
+  .scrolled {
+    backdrop-filter: blur(16px);
+    background-color: #0008;
+    box-shadow: 0 4px 16px #0008;
+  }
+  .left {
+    h1 {font-weight: 200;}
+  }
+  .icon {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #0004;
+    border: 0;
+    border-radius: 100%;
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+  }
+  #menu-dialog {
+    position: fixed;
+    margin: auto;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+
+    &::backdrop {
+      background-color: #000a;
+      backdrop-filter: blur(16px);
+    }
+  }
+  .modal ul {
+    display: grid;
+    gap: 2rem;
+    font-size: 1.5em;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+  .modal .close {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-top: 0.5rem;
+    margin-right: 2rem;
+  }
+</style>

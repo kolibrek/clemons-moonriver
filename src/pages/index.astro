@@ -1,4 +1,5 @@
 ---
+import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import Testimonial from '../components/Testimonial.astro';
 import Layout from '../layouts/Layout.astro';
@@ -6,11 +7,14 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Home - Moonriver Instruments">
 	<main>
+		<Header/>
 		<Hero />
 		<section id="about-us">
 			<h1>We work to inspire your creativity</h1>
-			<p><strong>History of our company:</strong></p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, repellat qui, ad architecto, harum ut quo molestias earum ratione veniam neque nobis odio nam consequatur itaque! Dicta dolor consequuntur id est, iure ullam nam quas amet maiores saepe itaque illum.</p>
+			<div>
+				<p><strong>History of our company:</strong></p>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, repellat qui, ad architecto, harum ut quo molestias earum ratione veniam neque nobis odio nam consequatur itaque! Dicta dolor consequuntur id est, iure ullam nam quas amet maiores saepe itaque illum.</p>
+			</div>
 		</section>
 		<section id="testimonials">
 			<Testimonial
@@ -36,6 +40,7 @@ section {
 	max-width: 100ch;
 	margin: 0 auto;
 	padding: 2rem;
+	min-height: 50vh;
 }
 section#testimonials {
 	grid-template-columns: repeat(3, minmax(120px, 1fr));

@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+---
+
+<Layout title="Blog - Moonriver Instruments">
+  <Header>
+    <h1>Blog</h1>
+  </Header>
+  <main>
+    <section>
+      <ul>
+        {allPosts.map(post => (
+          <li>
+            <a href={`blog/${post.id}`}>
+              <Image src={post.data.cover} alt={post.id} height="100"/>
+              <h3>{post.data.title}</h3>
+              <p>by: {post.data.author}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </main>
+</Layout>

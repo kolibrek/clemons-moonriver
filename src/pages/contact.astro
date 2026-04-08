@@ -1,14 +1,44 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import { Image } from "astro:assets";
+
+import map from '../assets/map.png';
 ---
 
 <Layout title="Contact - Moonriver Instruments">
+  <Header>
+    <h1>Contact Us!</h1>
+  </Header>
   <main>
-    <Header>
-      <h1>Contact Us!</h1>
-    </Header>
     <section>
+      <p>Veniam quis non dolore deserunt. Laborum do duis reprehenderit ex laboris. Ex deserunt elit ex labore elit adipisicing quis excepteur culpa commodo ullamco voluptate irure. Minim magna in est commodo.</p>
+      <p>Quis dolore mollit adipisicing quis consectetur reprehenderit id eiusmod pariatur qui sint. Consequat id minim reprehenderit ut. Duis irure irure ipsum laborum consequat ipsum laboris. Occaecat nisi amet laboris laborum duis enim ut ut voluptate. Veniam ullamco laborum excepteur magna sint qui cillum eiusmod ea. Lorem nisi mollit incididunt nostrud sunt laboris mollit qui sint sit. Commodo eu velit voluptate est occaecat.</p>
+    </section>
+    <section>
+      <h2>Where to find us</h2>
+      <Image src={map} alt="a map showing the location of the store" height="500" />
+    </section>
+    <section>
+      <h2>We'd love to hear from you!</h2>
+      <form action="">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email">
+        <label for="text">Message:</label>
+        <textarea name="text" id="text" cols="40" rows="6"></textarea>
+        <button type="submit">Submit</button>
+      </form>
     </section>
   </main>
 </Layout>
+
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+  }
+</style>

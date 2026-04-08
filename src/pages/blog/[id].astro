@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+
+export async function getStaticPaths() {
+  const post = await getCollection('blog');
+  return post.map(post => ({
+    params: { id: post.id },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} - Moonriver Instruments`}>
+  <Header>
+    <Image src={post.data.cover} alt="" height="400" />
+    <div>
+      <h1>{post.data.title}</h1>
+      <h2>{post.data.author}</h2>
+      <h2>{post.data.date.toLocaleDateString()}</h2>
+    </div>
+  </Header>
+  <main>
+    <Content/>
+  </main>
+</Layout>

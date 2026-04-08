@@ -24,6 +24,7 @@ const { Content } = await render(post);
     </Header>
 
     <section class="product">
+      <a href="/store">← Return to Store</a>
       <Content/>
       <h4>${post.data.cost}</h4>
       <button>Purchase Now!</button>
@@ -39,5 +40,9 @@ const { Content } = await render(post);
     max-width: 800px;
     min-height: 50vh;
     margin: 0 auto;
+  }
+  .product a {
+    text-decoration: none;
+    color: #333;
   }
 </style>

@@ -1,6 +1,6 @@
 ---
 title: Product 1
-cover: ../assets/guitar-play-hero.jpg
+cover: ../assets/black-guitar.jpg
 cost: 699.99
 ---
 Culpa aliquip non esse officia. Sunt veniam ut nulla duis. Nostrud reprehenderit aute fugiat sit amet sunt deserunt cillum ut officia sint eu. Nulla sit cillum est sunt Lorem cillum pariatur id culpa fugiat. Non aliquip esse elit aliqua elit dolore culpa occaecat ad ut. Proident sint incididunt officia est magna amet dolore ut consequat occaecat.

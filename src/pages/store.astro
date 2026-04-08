@@ -1,6 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import Product from '../components/Product.astro';
+
+const products = [
+  {name: 'Product 1', url: 'product1'},
+  {name: 'Product 2', url: 'product2'},
+  {name: 'Product 3', url: 'product3'},
+  {name: 'Product 4', url: 'product4'},
+  {name: 'Product 5', url: 'product5'},
+  {name: 'Product 6', url: 'product6'},
+];
 ---
 
 <Layout title="Store - Moonriver Instruments">
@@ -8,6 +18,13 @@ import Header from '../components/Header.astro';
     <Header/>
     <section>
       <h1>Store</h1>
+    </section>
+    <section class="product-grid">
+      <ul>
+        {products.map(product => (
+          <Product name={product.name} url={product.url}/>
+        ))}
+      </ul>
     </section>
   </main>
 </Layout>

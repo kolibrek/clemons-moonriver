@@ -15,7 +15,7 @@ const allProducts = await getCollection('products');
       <ul>
         {allProducts.map(product => (
           <li>
-            <a href={`store/${product.id}`}>
+            <a href={`/store/${product.id}`}>
               <Image src={product.data.cover} alt={product.id} height="100"/>
               <h3>{product.data.title}</h3>
               <p>${product.data.cost}</p>

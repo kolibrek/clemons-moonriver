@@ -1,11 +1,18 @@
 ---
 import { Image } from "astro:assets"
-import placeholder from '../assets/astro.svg'
-const { name, url, image = placeholder } = Astro.props
+// import placeholder from '../assets/astro.svg'
+const { product } = Astro.props
 ---
-<li>
-  <a href={'store/' + url}>
-    <Image src={image} alt={name} height="100"/>
-    <h3>{name}</h3>
-  </a>
-</li>
+<a href={'store/' + product.data.url}>
+  <Image src={product.data.image} alt={product.data.name} height="100"/>
+  <h3>{product.data.name}</h3>
+  <p>{product.data.cost}</p>
+</a>
+
+<style>
+  a {
+    display: grid;
+    place-items: center;
+    border: 1px solid #ccc;
+  }
+</style>

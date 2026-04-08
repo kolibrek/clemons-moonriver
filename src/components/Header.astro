@@ -43,6 +43,9 @@
     </div>
   </dialog>
 </header>
+<section class="title">
+  <slot/>
+</section>
 
 <style>
   header {
@@ -105,5 +108,12 @@
     right: 0;
     margin-top: 0.5rem;
     margin-right: 2rem;
+  }
+  .title {
+    background-color: #171717;
+    color: antiquewhite;
+    min-height: 40vh;
+    display: grid;
+    place-items: center;
   }
 </style>

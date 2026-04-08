@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+const allProducts = await getCollection('products');
+---
+<Layout title="Store - Moonriver Instruments">
+  <main>
+    <Header>
+      <h1>Store</h1>
+    </Header>
+    <section class="product-grid">
+      <ul>
+        {allProducts.map(product => (
+          <li>
+            <a href={`store/${product.id}`}>
+              <Image src={product.data.cover} alt={product.id} height="100"/>
+              <h3>{product.data.title}</h3>
+              <p>${product.data.cost}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .top {
+    background-color: #111;
+    color: antiquewhite;
+    min-height: 40vh;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 4px 16px #000;
+  }
+  .product-grid {
+    display: grid;
+    place-items: center;
+    min-height: 80vh;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  a {
+    display: grid;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: black;
+  }
+</style>

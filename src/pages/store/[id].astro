@@ -1,0 +1,43 @@
+---
+import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+
+export async function getStaticPaths() {
+  const post = await getCollection('products');
+  return post.map(post => ({
+    params: { id: post.id },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} - Moonriver Instruments`}>
+  <main>
+    <Header>
+      <Image src={post.data.cover} alt={post.data.title} height="600"/>
+      <h1>{post.data.title}</h1>
+    </Header>
+
+    <section class="product">
+      <Content/>
+      <h4>${post.data.cost}</h4>
+      <button>Purchase Now!</button>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .product {
+    display: grid;
+    place-content: center;
+    gap: 1rem;
+    max-width: 800px;
+    min-height: 50vh;
+    margin: 0 auto;
+  }
+</style>

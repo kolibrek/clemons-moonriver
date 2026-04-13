@@ -44,8 +44,9 @@ section {
 	min-height: 50vh;
 }
 section#testimonials {
-	grid-template-columns: repeat(3, minmax(120px, 1fr));
-	place-items: start;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	align-items: stretch;
 	gap: 1rem;
 }
 </style>

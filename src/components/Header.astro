@@ -25,7 +25,13 @@
     <a href="/"><h1>Moonriver</h1></a>
   </div>
   <div class="right">
-    <button id="menu-button" class="icon">⁝</button>
+    <ul class="menu-list large">
+      <li><a href="/">Home</a></li>
+      <li><a href="/store">Store</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <button id="menu-button" class="icon small">⁝</button>
   </div>
   <dialog id="menu-dialog">
     <div class="modal">
@@ -60,6 +66,7 @@
     box-shadow: 0 4px 16px #0000;
     backdrop-filter: blur(0px);
     transition: all 0.6s ease;
+    z-index: 10;
   }
   .scrolled {
     backdrop-filter: blur(16px);
@@ -84,6 +91,25 @@
     font-size: 1.5em;
     color: white;
     cursor: pointer;
+  }
+  .menu-list {
+    display: flex;
+    gap: 1rem;
+    list-style-type: none;
+    a {
+      text-decoration: none;
+      color: antiquewhite;
+    }
+    a:hover {
+      color: aquamarine;
+      text-decoration: underline;
+    }
+  }
+  @media (min-width: 641px) {
+    .small { display: none; }
+  }
+  @media (max-width: 639px) {
+    .large { display: none; }
   }
   #menu-dialog {
     position: fixed;
@@ -114,7 +140,8 @@
     margin-right: 2rem;
   }
   .title {
-    background-color: #171717;
+    background: #171717;
+    background-image: url('../assets/noise.svg');
     color: antiquewhite;
     min-height: 40vh;
     display: grid;

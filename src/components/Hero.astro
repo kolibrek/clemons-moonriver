@@ -9,21 +9,28 @@ import heroImage from '../assets/guitar-play-hero.jpg';
     <h2>Moonriver Instruments</h2>
     <a href="/store">Find Your Dream Instrument</a>
   </div>
-  <Image src={heroImage} loading="eager" height="600" alt="man playing a guitar" />
+  <Image class="hero-image" src={heroImage} loading="eager" height="600" alt="man playing a guitar" />
 </section>
 
 <style>
+  
   section {
+    position: relative;
+    width: 100%;
+    height: 100%;
     background-color: #171717;
     color: #faebd7;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 4rem;
+    z-index: 0;
+    overflow: hidden;
   }
   section div {
     display: flex;
     flex-direction: column;
+    width: fit-content;
   }
   h1 {
     font-size: 1.75em;
@@ -37,6 +44,27 @@ import heroImage from '../assets/guitar-play-hero.jpg';
     text-decoration: none;
     &:hover {
       color: hsl(153, 100%, 85%);
+    }
+  }
+  @media (max-width: 1300px) {
+    .hero-image {
+      position: absolute;
+      object-fit: cover;
+      object-position: right;
+      z-index: -1;
+      width: 100%;
+    }
+    section {
+      padding-left: unset;
+    }
+    section div {
+      background-color: #0008;
+      backdrop-filter: blur(2px);
+      width: 100%;
+      height: 100%;
+      padding-top: 56px;
+      justify-content: center;
+      align-items: center;
     }
   }
 </style>

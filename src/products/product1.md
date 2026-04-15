@@ -1,5 +1,5 @@
 ---
-title: Product 1
+title: Guitar
 cover: ../assets/black-guitar.jpg
 cost: 699.99
 ---

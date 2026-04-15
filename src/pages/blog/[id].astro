@@ -18,14 +18,53 @@ const { Content } = await render(post);
 
 <Layout title={`${post.data.title} - Moonriver Instruments`}>
   <Header>
-    <Image src={post.data.cover} alt="" height="400" />
-    <div>
-      <h1>{post.data.title}</h1>
-      <h2>{post.data.author}</h2>
-      <h2>{post.data.date.toLocaleDateString()}</h2>
+    <div class="img-wrapper">
+      <Image class="img" src={post.data.cover} alt="" loading="eager" height="600" />
     </div>
   </Header>
   <main>
-    <Content/>
+    <section class="meta">
+      <h1>{post.data.title}</h1>
+      <p>{post.data.author} - {post.data.date.toLocaleDateString()}</p>
+    </section>
+    <nav>
+      <a href="/blog">← Return to Blog</a>
+    </nav>
+    <section class="content">
+      <Content/>
+    </section>
   </main>
 </Layout>
+
+<style>
+  main {
+    padding: 0.5rem 1rem;
+    display: grid;
+    gap: 1.5rem;
+    max-width: 80ch;
+    margin: 0 auto;
+  }
+  .img-wrapper {
+    width: 100%;
+    max-width: 1300px;
+    margin-top: auto;
+  }
+  .img {
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  .meta {
+    display: grid;
+    justify-content: center;
+  }
+  .content {
+    display: grid;
+    gap: 1rem;
+    
+  }
+  nav a {
+    text-decoration: none;
+    color: #333;
+  }
+</style>

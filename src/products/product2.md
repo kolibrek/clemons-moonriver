@@ -1,5 +1,5 @@
 ---
-title: Product 2
+title: Guitar and Amp Set
 cover: ../assets/guitar-and-amp.jpg
 cost: 999.99
 ---

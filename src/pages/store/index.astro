@@ -9,16 +9,20 @@ const allProducts = await getCollection('products');
 <Layout title="Store - Moonriver Instruments">
   <main>
     <Header>
-      <h1>Store</h1>
+      <h1 class="title">Store</h1>
     </Header>
     <section class="product-grid">
       <ul>
         {allProducts.map(product => (
           <li>
             <a href={`/store/${product.id}`}>
-              <Image src={product.data.cover} alt={product.id} height="100"/>
-              <h3>{product.data.title}</h3>
-              <p>${product.data.cost}</p>
+              <div class="img-wrapper">
+                <Image class="product-image" src={product.data.cover} alt={product.id} layout='constrained' height="400"/>
+              </div>
+              <div>
+                <h3>{product.data.title}</h3>
+                <p>${product.data.cost}</p>
+              </div>
             </a>
           </li>
         ))}
@@ -28,34 +32,59 @@ const allProducts = await getCollection('products');
 </Layout>
 
 <style>
-  .top {
-    background-color: #111;
-    color: antiquewhite;
-    min-height: 40vh;
-    display: grid;
-    place-items: center;
-    box-shadow: 0 4px 16px #000;
+  .title {
+    font-size: clamp(3em, 3em + 8vw, 8em);
+    font-weight: 200;
   }
   .product-grid {
     display: grid;
     place-items: center;
     min-height: 80vh;
-    max-width: 800px;
+    width: 100%;
+    max-width: 1300px;
     margin: 0 auto;
   }
   ul {
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+    display: grid;
+    align-items: start;
+    width: 100%;
+  }
+  li:nth-child(even) a {
+    flex-direction: row-reverse;
+    justify-content: end;
   }
   a {
-    display: grid;
-    align-items: center;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 1rem;
     padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
     text-decoration: none;
     color: black;
+  }
+  .img-wrapper {
+    height: 100%;
+    max-width: 50%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  .product-image {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    /* border-radius: 0.5rem; */
+    transition: transform 0.5s ease;
+  }
+  a:hover, a:focus {
+    .product-image {
+      transform: scale(1.2);
+    }
+  }
+  h3 {
+    font-size: clamp(1em, -0.5em + 8vw, 3em);
+  }
+  p {
+    opacity: 0.6;
   }
 </style>

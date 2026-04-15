@@ -4,12 +4,14 @@ import Header from "../../components/Header.astro";
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 
-const allPosts = await getCollection('blog');
+const allPosts = (await getCollection('blog')).sort(
+  (a,b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 ---
 
 <Layout title="Blog - Moonriver Instruments">
   <Header>
-    <h1>Blog</h1>
+    <h1 class="title">Blog</h1>
   </Header>
   <main>
     <section>
@@ -17,9 +19,11 @@ const allPosts = await getCollection('blog');
         {allPosts.map(post => (
           <li>
             <a href={`/blog/${post.id}`}>
-              <Image src={post.data.cover} alt={post.id} height="100"/>
-              <h3>{post.data.title}</h3>
-              <p>by: {post.data.author}</p>
+              <Image class="img" src={post.data.cover} alt={post.id} height="800"/>
+              <div>
+                <h3>{post.data.title}</h3>
+                <p>by: {post.data.author} - {post.data.date.toLocaleDateString()}</p>
+              </div>
             </a>
           </li>
         ))}
@@ -27,3 +31,55 @@ const allPosts = await getCollection('blog');
     </section>
   </main>
 </Layout>
+
+<style>
+  .title {
+    font-size: clamp(3em, 3em + 8vw, 8em);
+    font-weight: 200;
+  }
+  section {
+    display: grid;
+    place-items: center;
+    min-height: 80vh;
+    width: 100%;
+    max-width: 1300px;
+    margin: 4rem auto;
+
+  }
+  ul {
+    display: grid;
+    align-items: start;
+    gap:  2rem;
+    width: 100%;
+    list-style-type: none;
+  }
+  a {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    min-height: 40vh;
+    color: antiquewhite;
+    text-decoration: none;
+  }
+  a div {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  a h3 {
+    font-size: 2em;
+  }
+  .img {
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+    transition: transform 0.5s ease;
+  }
+  a:hover, a:focus {
+    .img {
+      transform: scale(1.1);
+    }
+  }
+</style>

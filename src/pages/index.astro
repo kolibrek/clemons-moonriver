@@ -3,6 +3,28 @@ import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import Testimonial from '../components/Testimonial.astro';
 import Layout from '../layouts/Layout.astro';
+
+import justinImage from '../assets/justin.jpg';
+import natashaImage from '../assets/natasha.jpg';
+import gunterImage from '../assets/gunter.jpg';
+
+const testimonials = [
+	{
+		name: 'Justin',
+		image: justinImage,
+		quote: 'Ex adipisicing excepteur duis id officia eiusmod deserunt.'
+	},
+	{
+		name: 'Natasha',
+		image: natashaImage,
+		quote: 'Consequat ex do mollit sint magna fugiat aliquip exercitation dolor ea.'
+	},
+	{
+		name: 'Gunter',
+		image: gunterImage,
+		quote: 'Enim ipsum voluptate dolore voluptate officia sunt cupidatat consequat in fugiat laborum ex proident.'
+	}
+];
 ---
 
 <Layout title="Home - Moonriver Instruments">
@@ -18,18 +40,9 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 		<section id="testimonials">
-			<Testimonial
-				name="Justin"
-				quote="Ex adipisicing excepteur duis id officia eiusmod deserunt."
-			/>
-			<Testimonial
-				name="Natasha"
-				quote="Consequat ex do mollit sint magna fugiat aliquip exercitation dolor ea."
-			/>
-			<Testimonial
-				name="Gunter"
-				quote="Enim ipsum voluptate dolore voluptate officia sunt cupidatat consequat in fugiat laborum ex proident."
-			/>
+			{testimonials.map(({name, image, quote}) => (
+				<Testimonial name={name} quote={quote} image={image} />
+			))}
 		</section>
 	</main>
 </Layout>

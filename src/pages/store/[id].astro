@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
+import ChunkyButton from "../../components/ChunkyButton.astro";
 
 export async function getStaticPaths() {
   const post = await getCollection('products');
@@ -19,27 +20,39 @@ const { Content } = await render(post);
 <Layout title={`${post.data.title} - Moonriver Instruments`}>
   <main>
     <Header>
-      <Image src={post.data.cover} alt={post.data.title} height="600"/>
-      <h1>{post.data.title}</h1>
+      <div class="img-wrapper">
+        <Image class="img" src={post.data.cover} alt={post.data.title} height="600"/>
+      </div>
     </Header>
-
+    
     <section class="product">
+      <h1>{post.data.title}</h1>
       <a href="/store">← Return to Store</a>
       <Content/>
       <h4>${post.data.cost}</h4>
-      <button>Purchase Now!</button>
+      <ChunkyButton class="red">Purchase Now!</ChunkyButton>
     </section>
   </main>
 </Layout>
 
 <style>
+  .img-wrapper {
+    width: 100%;
+    max-width: 1300px;
+    margin-top: auto;
+  }
+  .img {
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
   .product {
     display: grid;
     place-content: center;
     gap: 1rem;
-    max-width: 800px;
-    min-height: 50vh;
+    max-width: 80ch;
     margin: 0 auto;
+    padding: 0.5rem 1rem;
   }
   .product a {
     text-decoration: none;

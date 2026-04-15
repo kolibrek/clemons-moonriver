@@ -1,24 +1,35 @@
 ---
 import { Image } from 'astro:assets';
+import ChunkyButton from './ChunkyButton.astro';
 import heroImage from '../assets/guitar-play-hero.jpg';
 ---
 
 <section id="hero">
-  <div>
-    <h1>Discover Your New Sound</h1>
-    <h2>Moonriver Instruments</h2>
-    <a href="/store">Find Your Dream Instrument</a>
+  <div class="container">
+    <div>
+      <h1>Discover Your New Sound</h1>
+      <h2>Moonriver Instruments</h2>
+
+      <!-- <a href="/store">Find Your Dream Instrument</a> -->
+      <ChunkyButton url="/store" class="black">Find Your Dream</ChunkyButton>
+    </div>
+    <Image class="hero-image" src={heroImage} loading="eager" height="600" alt="man playing a guitar" />
   </div>
-  <Image class="hero-image" src={heroImage} loading="eager" height="600" alt="man playing a guitar" />
 </section>
 
 <style>
-  
-  section {
-    position: relative;
+  #hero {
+    display: grid;
+    place-items: center;
     width: 100%;
     height: 100%;
     background-color: #171717;
+  }
+  .container {
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+    height: 100%;
     color: #faebd7;
     display: flex;
     justify-content: space-between;
@@ -27,13 +38,15 @@ import heroImage from '../assets/guitar-play-hero.jpg';
     z-index: 0;
     overflow: hidden;
   }
-  section div {
+  .container div {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     width: fit-content;
   }
   h1 {
-    font-size: 1.75em;
+    font-size: 1.4em;
+    font-style: italic;
   }
   h2 {
     font-weight: 200;
@@ -54,10 +67,11 @@ import heroImage from '../assets/guitar-play-hero.jpg';
       z-index: -1;
       width: 100%;
     }
-    section {
+    .container {
+      height: 100%;
       padding-left: unset;
     }
-    section div {
+    .container div {
       background-color: #0008;
       backdrop-filter: blur(2px);
       width: 100%;

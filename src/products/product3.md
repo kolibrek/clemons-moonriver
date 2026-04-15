@@ -1,5 +1,5 @@
 ---
-title: Product 3
+title: MIDI Synthesizer
 cover: ../assets/synth-green.jpg
 cost: 299.99
 ---

@@ -1,0 +1,16 @@
+---
+const { tiltFactor = 1, scaleFactor = 1, rounded = '0px' } = Astro.props;
+---
+<script>
+  import 'hover-tilt/web-component';
+</script>
+
+<hover-tilt tilt-factor={tiltFactor} scale-factor={scaleFactor} class="tilt">
+  <slot/>
+</hover-tilt>
+
+<style define:vars={{ rounded }}>
+  .tilt::part(container) {
+    border-radius: var(--rounded);
+  }
+</style>

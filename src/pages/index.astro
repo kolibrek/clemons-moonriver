@@ -1,8 +1,8 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import Testimonial from '../components/Testimonial.astro';
-import Layout from '../layouts/Layout.astro';
 
 import justinImage from '../assets/justin.jpg';
 import natashaImage from '../assets/natasha.jpg';
@@ -33,19 +33,32 @@ const testimonials = [
 			<Hero />
 		</Header>
 		<section id="about-us">
-			<h1>We work to inspire your creativity</h1>
-			<div>
+			<div class="backdrop"></div>
+			<div class="container">
+				<h1>We work to inspire your creativity</h1>
+				<br>
 				<h3>Our History</h3>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, repellat qui, ad architecto, harum ut quo molestias earum ratione veniam neque nobis odio nam consequatur itaque! Dicta dolor consequuntur id est, iure ullam nam quas amet maiores saepe itaque illum.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos doloribus quod optio facere deserunt, corrupti iure doloremque id beatae dolor provident consequuntur aut laborum, quasi quibusdam quo officia obcaecati inventore.</p>
 				<a href="/contact">Learn more about us!</a>
 			</div>
 		</section>
 		<section id="testimonials">
-			<h3>Hear from some of our customers!</h3>
-			<div class="grid">
-				{testimonials.map(({name, image, quote}) => (
-					<Testimonial name={name} quote={quote} image={image} />
-				))}
+			<div class="container">
+				<h1>Hear from some of our customers!</h1>
+				<div class="grid">
+					{testimonials.map(({name, image, quote}) => (
+						<Testimonial name={name} quote={quote} image={image} />
+					))}
+				</div>
+			</div>
+		</section>
+		<section id="products">
+			<div class="container">
+				<h1>Custom built at reasonable prices</h1>
+				<p>We at Moonriver instruments pride ourselves on our craftsmanship and our ability to work with our customers to find <strong>just the right sound</strong> for everyone. </p>
+				<p>Each piece of our equipment is lovingly built with its musician in mind. Don't just take our word for it, see for yourself!</p>
+				<a href="/store">See Our Work</a>
 			</div>
 		</section>
 	</main>
@@ -55,16 +68,42 @@ const testimonials = [
 section {
 	display: grid;
 	place-items: center;
-	gap: 2rem;
-	max-width: 100ch;
-	margin: 0 auto;
 	padding: 2rem;
 	min-height: 50vh;
 }
-#testimonials .grid{
+
+section .container {
+	width: 100%;
+	max-width: 80ch;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-	align-items: stretch;
 	gap: 1rem;
+}
+
+#about-us {
+	position: relative;
+	max-width: unset;
+	width: 100%;
+
+	.backdrop {
+		position: absolute;
+		inset: 0;
+		background-image: url('../assets/background.svg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		z-index: -1;
+		filter: blur(8px);
+	}
+}
+
+#testimonials {
+	.container {
+		max-width: 1300px;
+	}
+	.grid{
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+		align-items: stretch;
+		gap: 1rem;
+	}
 }
 </style>

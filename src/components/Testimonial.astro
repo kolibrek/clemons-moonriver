@@ -1,15 +1,18 @@
 ---
 import { Image } from "astro:assets";
+import HoverTilt from "./HoverTilt.astro";
 const { name, image, quote } = Astro.props;
 ---
 
-<article>
-  <Image class="image" src={image} alt={name} height={400} />
-  <div>
-    <h1>{name}</h1>
-    <p>"{quote}"</p>
-  </div>
-</article>
+<HoverTilt rounded="0.5rem">
+  <article>
+    <Image class="image" src={image} alt={name} height={400} />
+    <div>
+      <h1>{name}</h1>
+      <p>"{quote}"</p>
+    </div>
+  </article>
+</HoverTilt>
 
 <style>
   article {
@@ -17,7 +20,7 @@ const { name, image, quote } = Astro.props;
     align-items: space-between;
     box-shadow: 0 0 8px #0008;
     border-radius: 0.5rem;
-    background-color: #ddf;
+    
   }
   .image {
     width: 100%;
@@ -27,11 +30,25 @@ const { name, image, quote } = Astro.props;
     border-top-right-radius: 0.5rem;
   }
   article div {
+    position: relative;
     margin-top: auto;
     padding: 0 1rem 1rem 1rem;
+    background-color: #333;
+    color: antiquewhite;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+
+    &::before {
+      --size: 24px;
+      content: "";
+      position: absolute;
+      top: calc(-1 * var(--size));
+      border-left: var(--size) solid transparent;
+      border-right: var(--size) solid transparent;
+      border-bottom: var(--size) solid #333;
+    }
   }
-  h1 {
-  }
+
   p {
     font-style: italic;
   }

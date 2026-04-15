@@ -5,7 +5,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 export default defineConfig({
   fonts: [{
     provider: fontProviders.bunny(),
-    name: 'Atkinson Hyperlegible Next Variable',
+    name: 'Atkinson Hyperlegible Next',
     cssVariable: '--font-atkinson'
   },{
     provider: fontProviders.bunny(),

@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import { Image } from "astro:assets";
+import '../assets/chunky-button.css';
 
 import map from '../assets/map.png';
 ---
@@ -12,24 +13,30 @@ import map from '../assets/map.png';
   </Header>
   <main>
     <section>
-      <p>Veniam quis non dolore deserunt. Laborum do duis reprehenderit ex laboris. Ex deserunt elit ex labore elit adipisicing quis excepteur culpa commodo ullamco voluptate irure. Minim magna in est commodo.</p>
-      <p>Quis dolore mollit adipisicing quis consectetur reprehenderit id eiusmod pariatur qui sint. Consequat id minim reprehenderit ut. Duis irure irure ipsum laborum consequat ipsum laboris. Occaecat nisi amet laboris laborum duis enim ut ut voluptate. Veniam ullamco laborum excepteur magna sint qui cillum eiusmod ea. Lorem nisi mollit incididunt nostrud sunt laboris mollit qui sint sit. Commodo eu velit voluptate est occaecat.</p>
+      
+      <div class="container">
+        <p>Veniam quis non dolore deserunt. Laborum do duis reprehenderit ex laboris. Ex deserunt elit ex labore elit adipisicing quis excepteur culpa commodo ullamco voluptate irure. Minim magna in est commodo.</p>
+        <p>Quis dolore mollit adipisicing quis consectetur reprehenderit id eiusmod pariatur qui sint. Consequat id minim reprehenderit ut. Duis irure irure ipsum laborum consequat ipsum laboris. Occaecat nisi amet laboris laborum duis enim ut ut voluptate. Veniam ullamco laborum excepteur magna sint qui cillum eiusmod ea. Lorem nisi mollit incididunt nostrud sunt laboris mollit qui sint sit. Commodo eu velit voluptate est occaecat.</p>
+      </div>
     </section>
     <section>
       <h2>Where to find us</h2>
       <div class="img-wrapper">
-        <Image class="img" src={map} alt="a map showing the location of the store" height="500" />
+        <Image class="img" loading="lazy" src={map} alt="a map showing the location of the store" height="500" />
       </div>
     </section>
     <section>
-      <h2>We'd love to hear from you!</h2>
-      <form action="">
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email">
-        <label for="text">Message:</label>
-        <textarea name="text" id="text" cols="40" rows="6"></textarea>
-        <button type="submit">Submit</button>
-      </form>
+      <div class="backdrop"></div>
+      <div class="container">
+        <form action="">
+          <h2>We'd love to hear from you!</h2>
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email">
+          <label for="text">Message:</label>
+          <textarea name="text" id="text" cols="40" rows="6"></textarea>
+          <button class="btn-chunky teal small" type="submit">Submit</button>
+        </form>
+      </div>
     </section>
   </main>
 </Layout>
@@ -40,7 +47,6 @@ import map from '../assets/map.png';
     font-weight: 200;
   }
   main {
-    max-width: 80ch;
     margin: 0 auto;
     display: grid;
     gap: 2rem;
@@ -56,9 +62,53 @@ import map from '../assets/map.png';
   form {
     display: flex;
     flex-direction: column;
-    max-width: fit-content;
+    
+    gap: 1rem;
+    width: 100%;
+    max-width: 60ch;
     padding: 1rem;
-    border: 1px solid #ccc;
+    border: 1px solid #fff9;
+    background-color: #6664;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 0 8px #0004;
     border-radius: 0.5rem;
+
+    h2 { text-align: center; }
+
+    input, textarea {
+      border-radius: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1.2em;
+    }
+
+    textarea {
+      resize: vertical;
+    }
   }
+
+  section {
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+    min-height: 50vh;
+  }
+
+  section .container {
+    width: 100%;
+    max-width: 80ch;
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+  }
+
+  section .backdrop {
+	position: absolute;
+	inset: 0;
+	background-image: url('../assets/background.svg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: -1;
+	filter: blur(8px);
+}
 </style>

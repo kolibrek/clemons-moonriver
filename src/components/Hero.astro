@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import ChunkyButton from './ChunkyButton.astro';
+import '../assets/chunky-button.css';
 import heroImage from '../assets/guitar-play-hero.jpg';
 ---
 
@@ -9,7 +9,7 @@ import heroImage from '../assets/guitar-play-hero.jpg';
     <div>
       <h1>Discover Your New Sound</h1>
       <h2>Moonriver Instruments</h2>
-      <ChunkyButton url="/store" class="black">Find Your Dream</ChunkyButton>
+      <a href="/store" class="btn-chunky black">Find Your Dream</a>
     </div>
     <Image class="hero-image" src={heroImage} loading="eager" height="600" alt="man playing a guitar" />
   </div>

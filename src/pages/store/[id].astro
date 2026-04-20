@@ -3,7 +3,7 @@ import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
-import ChunkyButton from "../../components/ChunkyButton.astro";
+import "../../assets/chunky-button.css";
 
 export async function getStaticPaths() {
   const post = await getCollection('products');
@@ -30,7 +30,7 @@ const { Content } = await render(post);
       <a href="/store">← Return to Store</a>
       <Content/>
       <h4>${post.data.cost}</h4>
-      <ChunkyButton class="red">Purchase Now!</ChunkyButton>
+      <button class="btn-chunky red">Purchase Now!</button>
     </section>
   </main>
 </Layout>

@@ -37,10 +37,10 @@
     <div class="modal">
       <nav>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/store">Store</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li style="transition-delay: 0ms"><a href="/">Home</a></li>
+          <li style="transition-delay: 100ms"><a href="/store">Store</a></li>
+          <li style="transition-delay: 200ms"><a href="/blog">Blog</a></li>
+          <li style="transition-delay: 300ms"><a href="/contact">Contact</a></li>
         </ul>
       </nav>
       <form method="dialog" class="close">
@@ -120,22 +120,42 @@
     margin: auto;
     background-color: transparent;
     border: none;
-    padding: 0;
+    padding: 2rem;
+    opacity: 1;
+    transition: opacity 1s;
 
     &::backdrop {
       background-color: #000a;
       backdrop-filter: blur(16px);
     }
   }
+
+  @starting-style {
+    #menu-dialog {
+      opacity: 0;
+    }
+    #menu-dialog .modal li {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+  }
   .modal ul {
     display: grid;
     gap: 2rem;
     font-size: 1.5em;
+    list-style-type: none;
     a {
       text-decoration: none;
       color: white;
     }
   }
+
+  .modal li {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 1s, opacity 1s;
+  }
+
   .modal .close {
     position: fixed;
     top: 0;

@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import ScrollAnimation from '../components/ScrollAnimation.astro';
 import Testimonial from '../components/Testimonial.astro';
 
 import justinImage from '../assets/justin.jpg';
@@ -28,13 +29,13 @@ const testimonials = [
 ---
 
 <Layout title="Home - Moonriver Instruments">
+	<ScrollAnimation/>
 	<main>
 		<Header>
 			<Hero />
 		</Header>
-		<section id="about-us">
-			
-			<div class="container">
+		<section id="about-us" >
+			<div class="container slide-in-left">
 				<h1>We work to inspire your creativity</h1>
 				<br>
 				<h3>Our History</h3>
@@ -44,7 +45,7 @@ const testimonials = [
 			</div>
 		</section>
 		<section id="testimonials">
-			<div class="container">
+			<div class="container slide-in-right">
 				<h1>Hear from some of our customers!</h1>
 				<div class="grid">
 					{testimonials.map(({name, image, quote}) => (
@@ -55,7 +56,7 @@ const testimonials = [
 		</section>
 		<section id="products">
 			<div class="backdrop"></div>
-			<div class="container">
+			<div class="container slide-in-left">
 				<h1>Custom built at reasonable prices</h1>
 				<p>We at Moonriver instruments pride ourselves on our craftsmanship and our ability to work with our customers to find <strong>just the right sound</strong> for everyone. </p>
 				<p>Each piece of our equipment is lovingly built with its musician in mind. Don't just take our word for it, see for yourself!</p>

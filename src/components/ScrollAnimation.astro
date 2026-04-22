@@ -1,0 +1,38 @@
+---
+
+---
+<script>
+  const observer = new IntersectionObserver(entries => {
+		entries.forEach(entry => {
+			entry.isIntersecting ? entry.target.classList.add('show') : entry.target.classList.remove('show');
+		});
+	});
+	const slideElements = document.querySelectorAll('.slide-in-left, .slide-in-right');
+	slideElements.forEach(el => observer.observe(el));
+</script>
+
+<style is:global>
+.slide-in-left.show {
+	animation: rotate-left 1s ease-in-out, fade-in 1s linear;
+	transform-origin: -100% center;
+	will-change: transform;
+}
+
+.slide-in-right.show {
+	animation: rotate-right 1s ease-in-out, fade-in 1s linear;
+	transform-origin: 150% center;
+	will-change: transform;
+}
+
+@keyframes fade-in {
+	from { opacity: 0; }
+}
+
+@keyframes rotate-left {
+	from { transform: rotateZ(1deg); }
+}
+
+@keyframes rotate-right {
+	from { transform: rotateZ(-1deg);}
+}
+</style>

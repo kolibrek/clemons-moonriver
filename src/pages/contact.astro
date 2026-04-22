@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import ScrollAnimation from "../components/ScrollAnimation.astro";
 import { Image } from "astro:assets";
 import '../assets/chunky-button.css';
 
@@ -8,26 +9,28 @@ import map from '../assets/map.png';
 ---
 
 <Layout title="Contact - Moonriver Instruments">
+  <ScrollAnimation/>
   <Header>
     <h1 class="title">Contact Us!</h1>
   </Header>
   <main>
     <section>
-      
-      <div class="container">
+      <div class="container slide-in-left">
         <p>Veniam quis non dolore deserunt. Laborum do duis reprehenderit ex laboris. Ex deserunt elit ex labore elit adipisicing quis excepteur culpa commodo ullamco voluptate irure. Minim magna in est commodo.</p>
         <p>Quis dolore mollit adipisicing quis consectetur reprehenderit id eiusmod pariatur qui sint. Consequat id minim reprehenderit ut. Duis irure irure ipsum laborum consequat ipsum laboris. Occaecat nisi amet laboris laborum duis enim ut ut voluptate. Veniam ullamco laborum excepteur magna sint qui cillum eiusmod ea. Lorem nisi mollit incididunt nostrud sunt laboris mollit qui sint sit. Commodo eu velit voluptate est occaecat.</p>
       </div>
     </section>
     <section>
-      <h2>Where to find us</h2>
-      <div class="img-wrapper">
-        <Image class="img" loading="lazy" src={map} alt="a map showing the location of the store" height="500" />
+      <div class="container slide-in-right">
+        <h2>Where to find us</h2>
+        <div class="img-wrapper">
+          <Image class="img" loading="lazy" src={map} alt="a map showing the location of the store" height="500" />
+        </div>
       </div>
     </section>
     <section>
       <div class="backdrop"></div>
-      <div class="container">
+      <div class="container slide-in-left">
         <form action="">
           <h2>We'd love to hear from you!</h2>
           <label for="email">Email:</label>

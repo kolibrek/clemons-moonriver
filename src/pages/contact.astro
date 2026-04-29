@@ -24,6 +24,7 @@ import map from '../assets/map.png';
       <div class="container slide-in-right">
         <h2>Where to find us</h2>
         <div class="img-wrapper">
+          <div class="map-backdrop"></div>
           <Image class="img" loading="lazy" src={map} alt="a map showing the location of the store" height="500" />
         </div>
         <address>
@@ -83,11 +84,24 @@ import map from '../assets/map.png';
     padding: 0.5rem 1rem;
   }
   .img-wrapper {
-    width: 100%;
+    width: fit-content;
+    display: grid;
+    place-items: center;
+    position: relative;
+    margin-top: 2rem;
+  }
+  .map-backdrop {
+    position: absolute;
+    inset: -1.5rem;
+    background-color: #cdeab1;
+    box-shadow: 0 0 12px #0008;
+    z-index: -1;
+    transform: rotate(2deg);
   }
   .img {
-    width: 100%;
+    width: fit-content;
     object-fit: contain;
+    border: 1px solid #ccc;
   }
   form {
     display: flex;
@@ -100,7 +114,7 @@ import map from '../assets/map.png';
     border: 1px solid #fff9;
     background-color: #6664;
     backdrop-filter: blur(2px);
-    box-shadow: 0 0 8px #0004;
+    box-shadow: 0 0 8px #0008;
     border-radius: 0.5rem;
 
     h2 { text-align: center; }
